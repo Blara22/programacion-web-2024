@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Listas, multimedia y tablas</title>
+</head>
+<body>
+    <h1>Listas</h1>
+    <div>
+        <h2>Listas no ordenadas</h2>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Listas ordenadas</h2>
+        <ol>
+            <li>Item </li>
+            <li>Item </li>
+            <li>Item </li>
+        </ol>
+    </div>
+
+    <div>
+        <h2>Lista de definiciones</h2>
+        <dl>
+            <dt>Término 1</dt>
+            <dd>Definición del término 1</dd>
+            <dt>Término 2</dt>
+            <dd>Definición del término 2</dd>
+        </dl>
+        
+        <br>
+    </div>
+    
+    <div>
+        <h2>Imágenes</h2>
+        <figure>
+            <img src="img/image.jpg" width="50%" 
+                alt="Imagen de flor de loto" title="Imagen de la flor de loto">
+            <figcaption>Foto de la flor de loto</figcaption>
+        </figure>
+    </div>
+
+    <div>
+        <h2>Audio</h2>
+        <audio controls>
+            <source src="audio/audio.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <div>
+        <h2>Video</h2>
+        <video muted autoplay preload="auto" controls width="50%" poster="img/video-thumb.jpg">
+            <source src="video/video.mp4">
+            <track src="subtitles/video-en.vtt" type="subtitles" srclang="English">
+        </video>
+    </div>
+
+    <div>
+        <h1>Página de etiquetas básicas</h1>
+        <iframe src="../01_formato_contenido/index.html"></iframe>
+    </div>
+
+    <div>
+        <h2>Tablas</h2>
+        <table border="1" cellspacing="5" cellpadding="10" width="80%">
+            <caption>Tabla de ejemplo</caption>
+            <thead>
+                <tr>
+                    <th>Encabezado 1</th>
+                    <th>Encabezado 2</th>
+                    <th>Encabezado 3</th>
+                </tr>
+                <tr>
+                    <th>Subencabezado 1</th>
+                    <th colspan="2">Subencabezado 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dato 1</td>
+                    <td>Dato 2</td>
+                    <td rowspan="2">Dato 3</td>
+                </tr>
+                <tr>
+                    <td>Dato 4</td>
+                    <td>Dato 5</td>
+                </tr>
+            </tbody>
+            <tfooter>
+                <tr>
+                    <td colspan="3">Pie de la tabla</td>
+                </tr>
+            </tfooter>
+        </table>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
