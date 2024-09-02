@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Formularios</title>
+    </head>
+    <body>
+        <form action="/submit" method="post">
+            <fieldset>
+                <legend>Información personal</legend>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Ingresa tu correo"
+                    value="correo@correo.com"
+                    required
+                    
+                ><br><br>
+
+                <textarea 
+                    name="descripcion"
+                    rols="10" 
+                    cols="50"
+                    placeholder="Ingresa tu descripción">
+                </textarea>
+                <br><br>
+
+                <select name="pais">
+                    <option value="mex">México</option>
+                    <option value="usa">Estados Unidos</option>
+                    <option value="col">Colombia</option>
+                    <option value="arg">Argentina</option>
+                    <option value="ntd" selected>Países Bajos</option>
+                </select>
+                <br><br>
+
+                <input id="lenguaje" type="text" list="lenguajes">
+                <datalist id="lenguajes" name="lenguaje">
+                    <option>Español</option>
+                    <option>Inglés</option>
+                    <option>Francés</option>
+                </datalist><br><br>
+
+                <button type="submit">Enviar</button>
+            </fieldset>
+        </form>
+    </body>
+</html>
