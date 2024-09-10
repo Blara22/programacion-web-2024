@@ -1,0 +1,56 @@
+.box {
+    width: 30%;
+    height: 100;
+    background-color: blue;
+    border: 5px solid black;
+    color: white;
+}
+
+.box-padding {
+    padding: 15px 50px;
+}
+
+.box-margin {
+    margin: 15px;
+}
+
+.inline-box {
+    display: inline;
+    background-color: cadetblue;
+}
+
+.inline-block-box {
+    display: inline-block;
+    background-color: chocolate;
+}
+
+header {
+    height: 40px;
+}
+
+.box-ejemplo {
+    display: inline-block;
+    background-color: aquamarine;
+    margin: 0;
+    padding: 1%;
+    border: none;
+    min-height: 40px;
+}
+
+.logo {
+    width: 20%;
+}
+
+.title {
+    width: 50%;
+    text-align: center;
+}
+
+.contact-link {
+    width: 20%;
+    text-align: right;
+}
+
+.logo-image {
+    height: 40px;
+}
