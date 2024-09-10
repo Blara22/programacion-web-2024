@@ -4,7 +4,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .box {
@@ -51,21 +51,21 @@ header {
 
 .logo {
     width: 25%;
-    height: 40px; /*Se establece que tendrá un alto de 40 pixeles (como es un header queremos que siempre mida lo mismo de alto)*/
+    height: 70px; /*Se establece que tendrá un alto de 40 pixeles (como es un header queremos que siempre mida lo mismo de alto)*/
     padding: 0 0 0 1%; /*Le da un espacio pequeño al lado izquierdo de la imagen*/
 }
 
 .title {
     width: 43%;
     text-align: center;
-    line-height: 30px; /*Modificamos la altura de la línea para que el título se coloque en el centro (verticalmente).*/
-    font-size: 16px;
+    line-height: 40px; /*Modificamos la altura de la línea para que el título se coloque en el centro (verticalmente).*/
+    font-size: 20px;
 }
 
 .contact-link {
     width: 25%;
     text-align: right;
-    line-height: 30px; /*Modificamos la altura de la línea para que los enlaces se coloquen en el centro (verticalmente).*/
+    line-height: 40px; /*Modificamos la altura de la línea para que los enlaces se coloquen en el centro (verticalmente).*/
 }
 
 .logo-image {
@@ -75,5 +75,5 @@ header {
 
 .nav-link {
     color: white; /*Modificamos el color del enlace*/
-    font-size: 10px;
+    font-size: 16px;
 }
