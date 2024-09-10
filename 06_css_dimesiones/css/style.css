@@ -1,3 +1,12 @@
+body {
+    /*Permiten que no haya espacios a los lados de la página. Da la impresión de que el contenido abarca toda
+     la pantalla*/
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
 .box {
     width: 30%;
     height: 100;
@@ -24,33 +33,47 @@
     background-color: chocolate;
 }
 
+/*Aquí empieza lo del archivo ejemplo.html*/
+
 header {
-    height: 40px;
+    background-color: rgb(4, 2, 114); /*Le damos un color sólido a todo el header*/
 }
 
 .box-ejemplo {
     display: inline-block;
-    background-color: aquamarine;
+    /*background-color: aquamarine; Lo quité para que se viera todo azul completo (puesto en el header)*/
     margin: 0;
     padding: 1%;
-    border: none;
-    min-height: 40px;
+    font-size: initial; /*Se utiliza para restablecer el tamaño de la fuente*/
+    vertical-align: top; /*Se alinea con la parte superior*/
+    color: white; /*Por el fondo, ponemos las letras en blanco*/
 }
 
 .logo {
-    width: 20%;
+    width: 25%;
+    height: 40px; /*Se establece que tendrá un alto de 40 pixeles (como es un header queremos que siempre mida lo mismo de alto)*/
+    padding: 0 0 0 1%; /*Le da un espacio pequeño al lado izquierdo de la imagen*/
 }
 
 .title {
-    width: 50%;
+    width: 43%;
     text-align: center;
+    line-height: 30px; /*Modificamos la altura de la línea para que el título se coloque en el centro (verticalmente).*/
+    font-size: 16px;
 }
 
 .contact-link {
-    width: 20%;
+    width: 25%;
     text-align: right;
+    line-height: 30px; /*Modificamos la altura de la línea para que los enlaces se coloquen en el centro (verticalmente).*/
 }
 
 .logo-image {
-    height: 40px;
+    margin-top: 2%; /*Con esta línea hacemos que la imagen se coloque en medio del header*/
+    height: 80%; /*Abarca el 80% de lo alto, para que tenga espacio a los lados*/
+}
+
+.nav-link {
+    color: white; /*Modificamos el color del enlace*/
+    font-size: 10px;
 }
