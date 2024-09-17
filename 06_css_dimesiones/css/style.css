@@ -62,7 +62,19 @@ header {
     font-size: 20px;
 }
 
-.contact-link {
+header {
+    box-shadow: 10px 10px 10px 1px lightgray;
+}
+
+.shadow {
+    box-shadow: 10px 10px 10px 1px lightgray;
+    margin: 10px 10px;
+    width: 50%;
+    text-shadow: 3px 3px 5px blue;
+    padding: 2%;
+}
+
+.nav-bar {
     width: 25%;
     text-align: right;
     line-height: 40px; /*Modificamos la altura de la línea para que los enlaces se coloquen en el centro (verticalmente).*/

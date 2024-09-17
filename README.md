@@ -7,3 +7,5 @@ Ejemplos de códigos para los alumnos que cursan la materia de Programación Web
 4. [04: Formularios](/04_formularios/index.html)
 5. [05: CSS básico](/05_css_basico/index.html)
 6. [06: Dimensiones y Box Model](/06_css_dimesiones/index.html)
+7. [07: Position (relative, absolute, fixed y sticky)](/07_css_position/index.html)
+8. [Ejemplo de sitio diseñado en Canva (se avanzará durante las clases)](/sitio/index.html)
