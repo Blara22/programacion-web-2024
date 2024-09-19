@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+form {
+    margin: 8% auto;
+    max-width: 400px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+input, textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+    background: #f9f9f9;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+label {
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+button {
+    width: 100%;
+    background: #007BFF;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h1::before {
+    content: "💬 ";
+}
+
+h1::after {
+    content: " - Por favor, llena todos los campos";
+    color: #007BFF;
+    font-style: italic;
+    font-size: 0.6em;
+    margin-left: 10px;
+}
+
+label::first-letter {
+    color: #007BFF;
+    font-size: 1.5em;
+}
+
+p::first-line {
+    color: #007BFF;
+}
+
+::selection {
+    background: black;
+    color: #007BFF
+}
