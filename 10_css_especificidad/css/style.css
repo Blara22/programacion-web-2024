@@ -1,0 +1,23 @@
+div {
+    color: red; /*Especificidad: (0,0,0,1)*/
+}
+
+.mi-clase {
+    color: green; /*Especificidad: (0,0,1,0)*/
+}
+
+div p {
+    color: orange; /*Especificidad: (0,0,0,2)*/
+}
+
+#miId {
+    color: blue /*Especificidad: (0,1,0,0)*/
+}
+
+#miId p {
+    color: pink !important; /*Especificidad: (0,1,0,1)*/
+}
+
+#miId .color-yellow {
+    color: yellow; /*Especificidad: (0,1,1,0)*/
+}
