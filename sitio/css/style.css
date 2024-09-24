@@ -92,6 +92,7 @@ li:hover .submenu{
     background: #2D6FA4;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .hero-content {
@@ -135,9 +136,8 @@ li:hover .submenu{
 }
 
 .hero-img img {
-    height: 80%;
     align-self: center;
-    flex: 1 1 100%;
+    height: 80%;
 }
 
 .mission-vision-container {
