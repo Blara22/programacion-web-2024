@@ -1,0 +1,50 @@
+:root {
+    --color-fondo: #f4f4f4;
+    --color-principal: linear-gradient(to bottom, rgb(100, 100, 235), rgb(49, 49, 151));
+    --color-secundario:  #e4b141;
+    --padding-caja-contenedor: 20px;
+    --ancho-contenedor: 80%;
+}
+
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    background: var(--color-fondo);
+}
+
+header {
+    background: var(--color-principal, black);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: clamp(1rem, 2vw, 2rem);
+}
+
+.contenedor {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: var(--padding-caja-contenedor);
+    max-width: var(--ancho-contenedor);
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    flex-wrap: wrap;
+}
+
+.caja {
+    background: var(--color-secundario);
+    color: black;
+    padding: var(--padding-caja-contenedor);
+    text-align: center;
+    width: max(250px, calc(33.3% - var(--padding-caja-contenedor)*2));
+}
+
+footer {
+    background: var(--color-principal);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
