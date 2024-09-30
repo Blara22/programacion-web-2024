@@ -13,5 +13,6 @@ Ejemplos de códigos para los alumnos que cursan la materia de Programación Web
 - [10: Especificidad](/10_css_especificidad/index.html)
 - [11: Introducción a Flexbox](/11_css_flexbox/index.html)
 - [12: Variables y Funciones en CSS](12_css_funciones_variables/index.html)
+- [13: Introducción a CSS Grid](/13_css_grid/index.html)
 - [Ejemplo de sitio diseñado en Canva (se avanzará durante las clases)](/sitio/index.html)
 
