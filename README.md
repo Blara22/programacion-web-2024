@@ -20,5 +20,6 @@ Ejemplos de códigos para los alumnos que cursan la materia de Programación Web
 - [15: Ejemplo Bootstrap](/15_css_bootstrap/index.html)
 - [16: Ejemplo Tailwindcss](/16_css_tailwindcss/index.html)
 - [17: Introducción a JavaScript](/17_js_introduccion/index.html)
+- [18: Manipulación del DOM](/18_js_manpulacion_dom/index.html)
 - [Ejemplo de sitio diseñado en Canva (se avanzará durante las clases)](/sitio/index.html)
 
