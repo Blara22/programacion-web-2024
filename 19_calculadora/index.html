@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 50px;
+            background-color: #f4f4f4;
+            margin: 5% auto;
+            flex-wrap: wrap;
+        }
+
+        .calculadora {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="text"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 10px;
+            font-size: 1.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .buttons-container {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .historial {
+            display: flex;
+            flex-direction: column;
+            align-items: top;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            min-width: 300px;
+        }
+
+        .historial h3 {
+            text-align: center;
+        }
+
+        #lista-historial {
+            list-style-type: none;
+            line-height: 1.5em;
+            height: 150px;
+            overflow-y: auto;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" id="pantalla" disabled>
+        <div class="buttons-container">
+            <button onclick="agregarValor('7')">7</button>
+            <button onclick="agregarValor('8')">8</button>
+            <button onclick="agregarValor('9')">9</button>
+            <button onclick="agregarValor('/')">/</button>
+            <button onclick="agregarValor('4')">4</button>
+            <button onclick="agregarValor('5')">5</button>
+            <button onclick="agregarValor('6')">6</button>
+            <button onclick="agregarValor('*')">*</button>
+            <button onclick="agregarValor('1')">1</button>
+            <button onclick="agregarValor('2')">2</button>
+            <button onclick="agregarValor('3')">3</button>
+            <button onclick="agregarValor('-')">-</button>
+            <button onclick="agregarValor('0')">0</button>
+            <button onclick="calcular()">=</button>
+            <button onclick="limpiar()">C</button>
+            <button onclick="agregarValor('+')">+</button>
+        </div>
+    </div>
+
+    <div class="historial">
+        <h3>Historial de cálculos</h3>
+        <ul id="lista-historial">
+
+        </ul>
+        <button class="clear-history" onclick="limpiarHistorial()">Limpiar historial</button>
+    </div>
+    <script>
+        let operacion = '';
+        const pantalla = document.getElementById('pantalla');
+        const listaHistorial = document.getElementById('lista-historial');
+        let historial = [];
+
+        function agregarValor(caracter) {
+            operacion += caracter;
+            pantalla.value = operacion;
+        }
+
+        function limpiar(){
+            operacion = '';
+            pantalla.value = operacion;
+        }
+
+        function calcular(){
+            try {
+                let resultado = eval(operacion);
+                pantalla.value = resultado;
+                guardarEnHistorial(operacion+" = " + resultado);
+                operacion = resultado;
+            }catch(error){
+                pantalla.value = "Error";
+            }
+        }
+
+        function guardarEnHistorial(operacionConResultado){
+            historial.push(operacionConResultado);
+            localStorage.setItem('historial', JSON.stringify(historial));
+            agregarOperacionALista(operacionConResultado);
+        }
+
+        function agregarOperacionALista(operacion){
+            const li = document.createElement('li');
+            li.textContent = operacion;
+            listaHistorial.prepend(li);
+        }
+
+        function actualizarHistorial(){
+            historial = JSON.parse(localStorage.getItem('historial'));
+            listaHistorial.innerHTML = '';
+            historial.forEach(element => {
+                agregarOperacionALista(element);
+            });
+        }
+
+        function limpiarHistorial(){
+            localStorage.clear();
+            actualizarHistorial();
+        }
+
+        document.addEventListener('keydown', (event) => {
+            const tecla = event.key;
+            console.log(tecla);
+            if(!isNaN(tecla) || ['+', '-', '*', '/'].includes(tecla) ){
+                agregarValor(tecla);
+            }else if (tecla === 'Enter') {
+                calcular();
+            }else if(tecla === 'Escape'){
+                limpiar();
+            }
+        });
+
+        window.onload = function() {
+            actualizarHistorial();
+        }
+
+    </script>
+</body>
+</html>
