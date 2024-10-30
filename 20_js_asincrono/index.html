@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD con The Cat API</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Galería de Razas de Gatos</h1>
+    <div id="catGrid"></div>
+
+    <div class="pagination">
+        <button id="prevPage" disabled>Anterior</button>
+        <button id="nextPage">Siguiente</button>
+    </div>
+
+    <script>
+        const apiUrl = "https://api.thecatapi.com/v1/breeds";
+        const catGrid = document.getElementById('catGrid');
+        let currentPage = 1;
+        const limit = 4;
+        const options = {
+            headers: {
+                'x-api-key': 'live_9xAXeOySuZF12pqsDZzqNZy3lMzRgjHdcdFDViMWLt5kIahrWeNrkjQZ5QwzVkWA'
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => getBreeds(currentPage));
+
+        async function getBreeds(page){
+            try {
+                const response = await fetch(`${apiUrl}?limit=${limit}&page=${page - 1}`, options); 
+                if(!response.ok){
+                    throw new Error("Error " + response.status)
+                }
+                const breeds = await response.json();
+                
+                showBreeds(breeds);
+                updateButtons(breeds.length);
+            }catch (error) {
+                console.error(error);
+                //alert (`${error.message}`);
+            }
+        }
+
+        function showBreeds(breeds){
+            catGrid.innerHTML = ''; // Limpiar cuadrícula
+            breeds.forEach(breed => {
+                const catCard = document.createElement('div');
+                catCard.classList.add('cat-card');
+                catCard.innerHTML = `
+                    <img src="${breed.image?.url || 'https://via.placeholder.com/150'}" alt="${breed.name}">
+                    <h3>${breed.name}</h3>
+                    <p>${breed.temperament || 'Temperamento no disponible'}</p>
+                `;
+                catGrid.appendChild(catCard);
+            });
+        }
+
+        function updateButtons(breedCount){
+            document.getElementById('prevPage').disabled = currentPage === 1;
+            document.getElementById('nextPage').disabled = breedCount < limit;
+        }
+
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if(currentPage > 1){
+                currentPage--;
+                getBreeds(currentPage);
+            }
+        })
+
+        document.getElementById('nextPage').addEventListener('click', () => {
+            currentPage++;
+            getBreeds(currentPage);
+        })
+
+    </script>
+</body>

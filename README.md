@@ -22,5 +22,6 @@ Ejemplos de códigos para los alumnos que cursan la materia de Programación Web
 - [17: Introducción a JavaScript](/17_js_introduccion/index.html)
 - [18: Manipulación del DOM](/18_js_manpulacion_dom/index.html)
 - [19: Calculadora](/19_calculadora/index.html)
+- [20: JS Asíncrono (Galería de Gatos)](/20_js_asincrono/index.html)
 - [Ejemplo de sitio diseñado en Canva (se avanzará durante las clases)](/sitio/index.html)
 
