@@ -1,5 +1,6 @@
 <?php 
     include_once __DIR__.'/../../layouts/header.php';
+    require_once __DIR__ . '/../../../helpers/auth.php';
     require __DIR__.'/../../../controllers/careerController.php';
     
     $title = 'Añadir';

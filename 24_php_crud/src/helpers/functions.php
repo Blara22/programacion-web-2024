@@ -112,7 +112,7 @@ function set_error_message($message)
 function set_error_message_redirect($message)
 {
     $_SESSION['errors'][] = $message;
-    redirectBack();
+    redirect_back();
 }
 
 function redirect_back(){

@@ -57,11 +57,12 @@ function show($id)
 
 // Almacena una nueva carrera en la base de datos.
 function store() {
-    //$imageName = saveImage(); // Guarda la imagen y obtiene su nombre.
+    $imageName = saveImage(); // Guarda la imagen y obtiene su nombre.
+    
     $pdo = getPDO(); // Obtiene la conexión PDO.
 
     try {
-        $sql = "INSERT INTO careers (name, abbreviation, description, year, mission, vision/*, image_url*/) VALUES (:name, :abbreviation, :description, :year, :vision, :mission/*, :image_url*/)";
+        $sql = "INSERT INTO careers (name, abbreviation, description, year, mission, vision, image_url) VALUES (:name, :abbreviation, :description, :year, :vision, :mission, :image_url)";
         $stmt = $pdo->prepare($sql); // Prepara la consulta SQL.
         $data = [
             'abbreviation' => $_POST['abbreviation'], // Datos del formulario.
@@ -70,7 +71,7 @@ function store() {
             'mission' => $_POST['mission'],
             'vision' => $_POST['vision'],
             'year' => $_POST['year'],
-            //'image_url' => $imageName != null ? 'careers/'.$imageName : null // Guarda la URL de la imagen si existe.
+            'image_url' => $imageName != null ? 'careers/'.$imageName : null // Guarda la URL de la imagen si existe.
         ];
 
         $stmt->execute($data); // Ejecuta la consulta.
@@ -87,8 +88,8 @@ function store() {
 // Actualiza una carrera existente.
 function update($id) {
     $pdo = getPDO(); // Obtiene la conexión PDO.
-    //$careerData = show($id); // Obtiene los datos de la carrera existente.
-    //$imageName = saveImage(); // Guarda la nueva imagen si se subió.
+    $careerData = show($id); // Obtiene los datos de la carrera existente.
+    $imageName = saveImage(); // Guarda la nueva imagen si se subió.
 
     try {
         $sql = "UPDATE careers SET 
@@ -97,8 +98,8 @@ function update($id) {
                     description = :description, 
                     year = :year, 
                     vision = :vision, 
-                    mission = :mission 
-                    /*image_url = :image_url */
+                    mission = :mission,
+                    image_url = :image_url
                 WHERE id = :id"; // Consulta para actualizar la carrera.
         $stmt = $pdo->prepare($sql);
         $data = [
@@ -109,17 +110,16 @@ function update($id) {
             'mission' => $_POST['mission'],
             'vision' => $_POST['vision'],
             'year' => $_POST['year'],
-            //'image_url' => $imageName ? 'careers/'.$imageName : $careerData['image_url'] // Usa la nueva imagen si existe.
+            'image_url' => $imageName ? 'careers/'.$imageName : $careerData['image_url'] // Usa la nueva imagen si existe.
         ];
 
         $stmt->execute($data); // Ejecuta la consulta.
-
         // Borra la imagen previa si se subió una nueva.
-        /*if ($imageName && $currentCareer['image_url']) {
-            $oldImagePath = __DIR__ . '/../../public/assets/img/' . $currentCareer['image_url'];
+        if ($imageName && $careerData['image_url']) {
+            $oldImagePath = __DIR__ . '/../../public/assets/img/' . $careerData['image_url'];
             if (file_exists($oldImagePath)) 
                 unlink($oldImagePath); // Elimina la imagen antigua.
-        }*/
+        }
         
         set_success_message('Se han guardado los cambios.'); // Mensaje de éxito.
         redirect_back(); // Redirige al usuario.
@@ -127,4 +127,44 @@ function update($id) {
         error_log("Error al consultar la base de datos: " . $e->getMessage()); // Registra el error.
         set_error_message_redirect($e->getMessage()); // Mensaje de error.
     }
+
+    
+}
+
+// Guarda una imagen en el servidor.
+function saveImage()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $image = $_FILES['image'];
+
+        // Validar tipo de archivo (solo imágenes).
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!in_array($image['type'], $allowedTypes)) {
+            set_error_message_redirect('Solo se permiten imágenes JPEG, PNG o GIF.');
+        }
+
+        // Validar tamaño (máximo 2 MB).
+        if ($image['size'] > 2 * 1024 * 1024) {
+            set_error_message_redirect("El tamaño de la imagen no debe exceder los 2 MB.");
+        }
+
+        // Crear una carpeta para las imágenes si no existe.
+        $uploadDir = __DIR__ . '/../../public/assets/img/careers/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true); // Crea la carpeta con permisos.
+        }
+
+        // Generar un nombre único para la imagen.
+        $imageName = uniqid('img_', true) . '.' . pathinfo($image['name'], PATHINFO_EXTENSION);
+
+        // Mover la imagen a la carpeta de destino.
+        $imagePath = $uploadDir . $imageName;
+        if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
+            set_error_message_redirect("Error al mover la imagen.");
+        }
+
+        return $imageName; // Retorna el nombre de la imagen.
+    }
+    
+    return null; // Si no se subió imagen, retorna null.
 }

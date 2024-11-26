@@ -1,5 +1,6 @@
 <?php 
 include_once __DIR__.'/../../layouts/header.php';
+require_once __DIR__ . '/../../../helpers/auth.php';
 require __DIR__.'/../../../controllers/careerController.php';
 $careers = index();
 ?>
@@ -7,7 +8,7 @@ $careers = index();
 <div class="table-container">
         <div class="table-container-header">
             <h1 class="h1-table">Listado de Carreras</h1>
-            <a href="form.php" class="add-button">Añadir Carrera</a>
+            <a href="<?=BASE_URL?>/careers/form" class="add-button">Añadir Carrera</a>
         </div>
 
         <table>
@@ -29,7 +30,7 @@ $careers = index();
                     <td><?=$career['year']?></td>
                     <td class="actions">
                         <a href="#">Ver</a>
-                        <a href="form.php?career_id=<?=$career['id']?>">Editar</a>
+                        <a href="<?=BASE_URL?>/careers/form?career_id=<?=$career['id']?>">Editar</a>
                         <a href="#">Eliminar</a>
                     </td>
                 </tr>

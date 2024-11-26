@@ -28,13 +28,21 @@
             <li><a class="navigation-link" href="#">Aspirantes</a>
                 <ul class="submenu">
                     <?php foreach($careers as $career): ?>
-                    <li><a href="<?=BASE_URL?>/../src/views/public/careers/details.php?career=<?=$career['abbreviation']?>"><?=$career['name']?></a></li>
+                    <li><a href="<?=BASE_URL?>/carreras?career=<?=$career['abbreviation']?>"><?=$career['name']?></a></li>
                     <?php endforeach; ?>
     
                 </ul>
             </li>
             <li><a class="navigation-link" href="#">Estudiantes</a></li>
             <li><a class="navigation-link" href="#">Egresados</a></li>
+            <?php 
+            if(isset($_SESSION['user'])):
+            ?>
+                <li><a class="navigation-link" href="<?=BASE_URL?>/logout">Cerrar sesión</a></li>
+            <?php else: ?>
+                <li><a class="navigation-link" href="<?=BASE_URL?>/login">Iniciar sesión</a></li>
+            <?php endif; 
+            ?>
         </ul>
     </nav>
 </header>
